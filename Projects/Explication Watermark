@@ -1,0 +1,22 @@
+The goal of this project is to detect the white pixels of the "ULB" logo,add them to a target image and save the result.
+
+The given "ULB" Logo is in grayscale,I have chosen to convert it to RGB so that I won't be working with 2 images in different "color dimensions"
+
+I implemented a basic watermark function "wtm" and evolved it over time. 
+
+First it simply detects the white pixel of the watermark by browsing all the pixels of the ULB logo with a double "for" iteration and checking if the value of the pixel is 255 for the R,G and B channel.
+Once the white pixels where located, it adds them to the target image by setting the target's image pixel located at the same spot as a white watermark pixel to 255, making it white. The triple "for" loop allows to work for every color channel of every pixel.
+
+Using the same logic we can play with the intensity of the pixel. The parameter "intensity" allows to achieve that but we must be carefull that the values loop around so an "if" loop makes sure the maximum value is locked at 255. A 255 intensity assure that every pixel is at it's maximum value making the watermark perfectly opac, 0 makes it invisible and a value in between gives a transparent watermark.
+
+We can also set to watermark at any given location in the final result by shifting the target's pixel by 2 new parameters in the function : (posy,posx).
+
+It can also be interesting to be able to get a black watermark. It uses the same logic as the white watermark except it substracts "intensity" to darken the pixels and the "if" loop blocks the values at 0.
+I first used an user input parameter to select black or white but it is more useful that a function analyses itself the area where thewatermark is going to be placed.
+
+The function "lum" gets the target image and the set-up position and returns "True" by default meaning the watermark will be white. It first converts the image to HSV because it is clearer and easier to implement brighteness/darkeness conditions. If the pixel is high in value and low in saturation then it means the pixel is in a light grey or white and "lum" returns False. 
+I tried using the same logic to implement this to every white pixel of the watermark to avoid the case where a dark/bright edge makes the watermark partially visible and gives a black and white watermark but the algorithm as it is takes extremely long.
+
+Another way to implement the choice of black and white could have been to use a local cumulative histogram and if a significant amount of pixel have a value of a significantly bright value then the watermark should be black. But the dark/bright edge issu would remain. It is solvable by lowering the area of the cumulative histogram and the most accurate result would be to select a single pixel which is similar to the method that I've explained above.
+
+Finaly the last line allows to save the resulting image as "project.png"
