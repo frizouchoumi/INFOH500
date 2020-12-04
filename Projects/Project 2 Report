@@ -1,0 +1,11 @@
+Image enhancement is a very broad and subjective subjet because enhancement can have multiple signification.
+In medical terms, image enhancement could mean edge highlight and noise reduction. In graphic design it can mean making the image more appealing to the eye. For photography, it can also mean brightening or darkening the image to correct under/over exposed photopgraphs.
+
+For this project I have decided to implement one my favorite Photoshop tool : the "Curves" feature by following course material.
+
+My goal here is to create a completely user-controlled function, whatever the input image is the user will be able through the manipulation of variables to color correct his image as the user wishes. 8 variables might seem like a lot but they offer complete freedom over the effect for the user to create the perfect image. 
+
+The "CC" function is a compilation of a level modification (Video "Autolevels") for the whole image, the red channel, the blue channel and the green channel.
+It receives the input image and applies the function in the order above and uses the result of the most recent step to complete the next step. This makes sure that all chanels are modified properly.
+
+Of course the "Curves" tool is much more precise but with our linear approximation we can obtain a good result and are able to edit all images even if they have completely different histograms.
