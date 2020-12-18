@@ -1,0 +1,2 @@
+For this project I have used the "watershed" method to isolate the tumor in the brain. One of the marker is placed on the tumour and the other one is placed on the brain.
+Once the algorithm has isolated the tumor, calculating the area is pretty straight forward. We simply have to multiply the number of pixel in the tumor by the given area of each pixel (0.115cm²)
